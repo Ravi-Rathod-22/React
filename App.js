@@ -1,12 +1,38 @@
 import React from "react";
-import ReactDOM from 'react-dom';
+import ReactDOM from "react-dom";
 
-const heading = React.createElement('h1', {id:'intro'}, "Hello, My Name Is Ravi Rathod");
+const heading = React.createElement(
+  "h1",
+  { id: "intro" },
+  "Hello, My Name Is Ravi Rathod"
+);
 
-const heading2 = React.createElement('h1', {id:'description'}, "I am here to learn React");
+const heading2 = React.createElement(
+  "h2",
+  { id: "description" },
+  "I am here to learn React"
+);
 
-const container = React.createElement("div", {id:'container'}, [heading , heading2]);
+const heading3 = React.createElement(
+  "h3",
+  { id: "use" },
+  "Using CreateElement"
+);
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const container = React.createElement("div", { id: "container" }, [
+  heading,
+  heading2,
+  heading3,
+]);
 
-root.render(container)
+const jsx = (
+  <div className="title">
+    <h1>Hello, My Name Is Ravi Rathod</h1>
+    <h2>I am here to learn React</h2>
+    <h3>Using JSX</h3>
+  </div>
+);
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+
+root.render([container, jsx]);
