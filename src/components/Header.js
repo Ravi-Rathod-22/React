@@ -1,13 +1,11 @@
 import { useState } from "react";
+import Logo from "../assest/img/foodvilla.webp";
+import { Link } from "react-router-dom";
 
 const Title = () => {
   return (
     <a href="/">
-      <img
-        className="logo"
-        alt="logo"
-        src="https://lh3.googleusercontent.com/Em7AHf7XBH_RtGfCBVXz9RH8SM_pHkj3xPP-yd3cRguY1_Jc8fmqgx6WxnvGVyPV5xs5gL3HCD0FCuv6Xo4CwoY6ak4=w100-rw"
-      />
+      <img className="logo" alt="logo" src={Logo} />
     </a>
   );
 };
@@ -20,9 +18,15 @@ const Header = () => {
       <Title />
       <div className="nav-items">
         <ul>
-          <li>Home</li>
-          <li>About</li>
-          <li>Contact</li>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/about">About</Link>
+          </li>
+          <li>
+            <Link to="/contact">Contact</Link>
+          </li>
           <li>Cart</li>
         </ul>
       </div>
