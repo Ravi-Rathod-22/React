@@ -2,12 +2,8 @@ import { useState, useEffect } from "react";
 import RestrauntCard from "./RestrauntCard";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
-
-function filterData(searchText, restraunts) {
-  return restraunts.filter((restraunt) =>
-    restraunt.info.name.toLowerCase().includes(searchText.toLowerCase())
-  );
-}
+import { filterData } from "../utils/helper";
+import useOnline from "../utils/useOnline";
 
 const Body = () => {
   let searchText = "KFC";
@@ -34,6 +30,13 @@ const Body = () => {
       json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
   }
+
+  const isOnline = useOnline();
+
+  if (!isOnline) {
+    return <h1>Offline, Please check your internet connection! </h1>;
+  }
+
   return !allRestraunts.length ? (
     <Shimmer />
   ) : (
@@ -59,8 +62,11 @@ const Body = () => {
       <div className="restaurant-list">
         {filterRestraunts.map((restraunt) => {
           return (
-            <Link to={`/restaurant/${restraunt.info.id}`}>
-              <RestrauntCard {...restraunt.info} key={restraunt.info.id} />
+            <Link
+              to={`/restaurant/${restraunt.info.id}`}
+              key={restraunt.info.id}
+            >
+              <RestrauntCard {...restraunt.info} />
             </Link>
           );
         })}
